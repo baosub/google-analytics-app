@@ -1,5 +1,23 @@
+'use client'
 import Image from "next/image";
 import styles from "./page.module.css";
+
+const event = ({ action, category, label, value }: any) => {
+  (window as any).gtag('event', action, {
+    event_category: category,
+    event_label: label,
+    value: value,
+  });
+};
+
+const addToCart = () => {
+  event({
+    action: 'add_to_cart',
+    category: 'ecommerce',
+    label: 'Item added to cart',
+    value: 'Tesla',
+  });
+};
 
 export default function Home() {
   return (
@@ -90,6 +108,9 @@ export default function Home() {
           </p>
         </a>
       </div>
+
+      <button onClick={addToCart}>Add to cart</button>
+      
     </main>
   );
 }
