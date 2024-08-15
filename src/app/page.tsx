@@ -1,6 +1,9 @@
 'use client'
 import Image from "next/image";
 import styles from "./page.module.css";
+import Link from "next/link";
+
+
 
 const event = ({ action, category, label, value }: any) => {
   (window as any).gtag('event', action, {
@@ -16,6 +19,15 @@ const addToCart = () => {
     category: 'ecommerce',
     label: 'Item added to cart',
     value: 'Tesla',
+  });
+};
+
+const changePage = () => {
+  event({
+    action: 'change_page',
+    category: 'navigation',
+    label: 'user changes page',
+    value: 'go to Contact',
   });
 };
 
@@ -110,6 +122,7 @@ export default function Home() {
       </div>
 
       <button onClick={addToCart}>Add to cart</button>
+      <Link href='/contact' onClick={changePage}>Contact</Link>
       
     </main>
   );
