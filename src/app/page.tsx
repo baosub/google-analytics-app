@@ -2,6 +2,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
+import GoogleAd from "@/components/GoogleAd";
 
 
 
@@ -21,7 +22,7 @@ const addToCart = () => {
     value: 'Tesla',
   });
 };
-
+//veirificar como agregar varios eventos a una sola pagina
 const changePage = () => {
   event({
     action: 'change_page',
@@ -123,6 +124,7 @@ export default function Home() {
 
       <button onClick={addToCart}>Add to cart</button>
       <Link href='/contact' onClick={changePage}>Contact</Link>
+      <GoogleAd/>{/*Solo mostrara el anuncio en esta pagina, ponerlo en layout para que aparezca en todas */}
       
     </main>
   );
